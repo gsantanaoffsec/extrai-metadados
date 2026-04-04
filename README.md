@@ -1,16 +1,16 @@
-# 🔍 MetaDocs Extractor
+# Extrator de Metadados de Documentos
 
-Script em **Shell Script** para Kali Linux que varre um site, baixa automaticamente todos os documentos encontrados e extrai seus metadados, salvando tudo em um relatório `.txt`.
+Script em Shell Script para Kali Linux que varre um site, baixa automaticamente todos os documentos encontrados e extrai seus metadados, salvando tudo em um relatório `.txt`.
 
 ---
 
-## 📋 Sobre o projeto
+## Sobre o projeto
 
 Durante testes de segurança (pentest) ou análises OSINT, documentos públicos em sites podem conter metadados sensíveis — como nomes de usuários internos, versões de software, caminhos de rede, nomes de empresas e datas de criação. Este script automatiza essa coleta.
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
 - Varre o HTML de uma URL em busca de links para documentos
 - Suporte a: `PDF`, `DOCX`, `XLSX`, `PPTX`, `DOC`, `XLS`, `PPT`, `ODT`, `ODS`, `ODP`, `RTF`, `CSV`
@@ -22,7 +22,7 @@ Durante testes de segurança (pentest) ou análises OSINT, documentos públicos 
 
 ---
 
-## 🛠️ Dependências
+## Dependências
 
 | Ferramenta | Função |
 |---|---|
@@ -39,13 +39,13 @@ sudo apt install curl wget exiftool -y
 
 ---
 
-## 🚀 Como usar
+## Como usar
 
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/metadocs-extractor.git
-cd metadocs-extractor
+git clone https://github.com/seu-usuario/extrator-metadados.git
+cd extrator-metadados
 ```
 
 ### 2. Dê permissão de execução
@@ -69,11 +69,11 @@ tail -f metadados_*.txt
 
 ---
 
-## 📄 Exemplo de saída
+## Exemplo de saída
 
 ```
 ================================================
-  RELATÓRIO DE METADADOS — DOCUMENTOS
+  RELATORIO DE METADADOS - DOCUMENTOS
   Alvo  : https://exemplo.com
   Data  : 04/04/2026 14:30:22
 ================================================
@@ -84,8 +84,8 @@ URL      : https://exemplo.com/docs/relatorio_anual.pdf
 TAMANHO  : 2.4M
 
 --- METADADOS ---
-Title          : Relatório Anual 2025
-Author         : João Silva
+Title          : Relatorio Anual 2025
+Author         : Joao Silva
 Creator        : Microsoft Word
 Company        : Empresa Exemplo Ltda
 CreateDate     : 2025:03:10 09:14:32
@@ -101,7 +101,7 @@ PageCount      : 48
 
 ---
 
-## 🔎 Metadados coletados
+## Metadados coletados
 
 | Campo | O que pode revelar |
 |---|---|
@@ -115,28 +115,173 @@ PageCount      : 48
 
 ---
 
-## ⚠️ Aviso Legal
+## Aviso Legal
 
-Este script é destinado exclusivamente a fins educacionais e de testes de segurança autorizados. Só utilize em sistemas e sites para os quais você tem permissão explícita. O uso indevido desta ferramenta pode violar leis locais e internacionais. O autor não se responsabiliza por qualquer uso inadequado.
+Este script é destinado exclusivamente a fins educacionais e de testes de segurança autorizados. Utilize apenas em sistemas e sites para os quais você possui permissão explícita. O uso indevido desta ferramenta pode violar leis locais e internacionais. O autor não se responsabiliza por qualquer uso inadequado.
 
 ---
 
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ```
-metadocs-extractor/
+extrator-metadados/
 ├── extrai_metadados.sh   # Script principal
 └── README.md             # Documentação
 ```
 
 ---
 
-## 🤝 Contribuindo
+## Contribuindo
 
-Pull requests são bem-vindos! Para mudanças maiores, abra uma issue primeiro para discutirmos o que você gostaria de modificar.
+Pull requests são bem-vindos. Para mudanças maiores, abra uma issue primeiro para discutirmos o que você gostaria de modificar.
 
 ---
 
-## 📜 Licença
+## Licença
 
 Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+--------------------------------------------------------------------
+
+# Document Metadata Extractor
+
+A Shell Script tool for Kali Linux that crawls a target website, automatically downloads all found documents, and extracts their metadata — saving everything into a `.txt` report.
+
+---
+
+## About
+
+During penetration testing or OSINT analysis, publicly available documents on websites can expose sensitive metadata — such as internal usernames, software versions, network paths, company names, and creation dates. This script automates that collection process.
+
+---
+
+## Features
+
+- Crawls a URL's HTML to find document links
+- Supports: `PDF`, `DOCX`, `XLSX`, `PPTX`, `DOC`, `XLS`, `PPT`, `ODT`, `ODS`, `ODP`, `RTF`, `CSV`
+- Automatically downloads each file via `wget`
+- Extracts metadata immediately after each download (no waiting for all files)
+- Saves everything to a timestamped `.txt` report
+- Displays filtered fields (author, company, dates, software) + full `exiftool` raw dump
+- Cleans up temporary files after execution
+
+---
+
+## Dependencies
+
+| Tool | Purpose |
+|---|---|
+| `curl` | Fetch the page HTML to find document links |
+| `wget` | Download the found files |
+| `exiftool` | Extract metadata from the documents |
+
+### Installing dependencies
+
+```bash
+sudo apt update
+sudo apt install curl wget exiftool -y
+```
+
+---
+
+## Usage
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/document-metadata-extractor.git
+cd document-metadata-extractor
+```
+
+### 2. Make the script executable
+
+```bash
+chmod +x extrai_metadados.sh
+```
+
+### 3. Run it against a target URL
+
+```bash
+./extrai_metadados.sh https://target-site.com
+```
+
+### 4. Watch the report being written in real time (optional)
+
+```bash
+# In a second terminal:
+tail -f metadados_*.txt
+```
+
+---
+
+## Output example
+
+```
+================================================
+  METADATA REPORT - DOCUMENTS
+  Target : https://example.com
+  Date   : 04/04/2026 14:30:22
+================================================
+
+================================================
+FILE     : annual_report.pdf
+URL      : https://example.com/docs/annual_report.pdf
+SIZE     : 2.4M
+
+--- METADATA ---
+Title          : Annual Report 2025
+Author         : John Smith
+Creator        : Microsoft Word
+Company        : Example Corp
+CreateDate     : 2025:03:10 09:14:32
+ModifyDate     : 2025:03:15 17:45:01
+LastModifiedBy : Jane Doe
+Software       : Microsoft Office Word 2019
+PageCount      : 48
+...
+================================================
+  TOTAL DOCUMENTS ANALYZED: 7
+================================================
+```
+
+---
+
+## Collected metadata fields
+
+| Field | What it may reveal |
+|---|---|
+| `Author / Creator` | Name of the user who created the file |
+| `Company` | Company name configured in the Office installation |
+| `LastModifiedBy` | Last user who edited the document |
+| `CreateDate / ModifyDate` | File creation and modification timestamps |
+| `Software / Producer` | Software version used (Word, LibreOffice, Adobe...) |
+| `PageCount / WordCount` | Document size indicators |
+| `Keywords / Subject` | Internal tags defined inside the document |
+
+---
+
+## Legal Disclaimer
+
+This script is intended solely for educational purposes and authorized security testing. Only use it on systems and websites for which you have explicit permission. Unauthorized use of this tool may violate local and international laws. The author is not responsible for any misuse.
+
+---
+
+## Project structure
+
+```
+document-metadata-extractor/
+├── extrai_metadados.sh   # Main script
+└── README.md             # Documentation
+```
+
+---
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
